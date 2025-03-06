@@ -15,7 +15,7 @@ public class Utilisateur {
     private String nom;
     private String pseudonyme;
     private String email;
-    private String modepasse;
+    private String motdepasse;
     private Role role;
 
     public Integer getId() {
@@ -51,37 +51,37 @@ public class Utilisateur {
     }
 
     public String getModepasse() {
-        return modepasse;
+        return motdepasse;
     }
 
     public void setModepasse(String modepasse) {
-        this.modepasse = modepasse;
+        this.motdepasse = modepasse;
     }
 
-    public String getRole() {
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(Role role) {
         this.role = role;
     }
 
     public Utilisateur() {
     }
 
-    public Utilisateur(Integer id, String nom, String pseudonyme, String email, String modepasse, String role) {
+    public Utilisateur(Integer id, String nom, String pseudonyme, String email, String modepasse, Role role) {
         this.id = id;
         this.nom = nom;
         this.pseudonyme = pseudonyme;
         this.email = email;
-        this.modepasse = modepasse;
+        this.motdepasse = modepasse;
         this.role = role;
     }
 
     @Override
     public String toString() {
         return "Utilisateur [id=" + id + ", nom=" + nom + ", pseudonyme=" + pseudonyme + ", email=" + email
-                + ", modepasse=" + modepasse + ", role=" + role + "]";
+                + ", modepasse=" + motdepasse + ", role=" + role + "]";
     }
 
     @Override
@@ -92,7 +92,7 @@ public class Utilisateur {
         result = prime * result + ((nom == null) ? 0 : nom.hashCode());
         result = prime * result + ((pseudonyme == null) ? 0 : pseudonyme.hashCode());
         result = prime * result + ((email == null) ? 0 : email.hashCode());
-        result = prime * result + ((modepasse == null) ? 0 : modepasse.hashCode());
+        result = prime * result + ((motdepasse == null) ? 0 : motdepasse.hashCode());
         result = prime * result + ((role == null) ? 0 : role.hashCode());
         return result;
     }
@@ -126,10 +126,10 @@ public class Utilisateur {
                 return false;
         } else if (!email.equals(other.email))
             return false;
-        if (modepasse == null) {
-            if (other.modepasse != null)
+        if (motdepasse == null) {
+            if (other.motdepasse != null)
                 return false;
-        } else if (!modepasse.equals(other.modepasse))
+        } else if (!motdepasse.equals(other.motdepasse))
             return false;
         if (role == null) {
             if (other.role != null)
