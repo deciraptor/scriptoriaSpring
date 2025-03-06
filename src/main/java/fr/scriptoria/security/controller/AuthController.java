@@ -1,4 +1,4 @@
-package fr.scriptoria.security.controlleur;
+package fr.scriptoria.security.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,14 +21,14 @@ import fr.scriptoria.security.repository.UserRepository;
 
 @RestController
 @RequestMapping("/api/auth")
-public class AuthControlleur {
+public class AuthController {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final JWTGenerator jwtGenerator;
     private final AuthenticationManager authenticationManager;
 
-    public AuthControlleur(UserRepository userRepository, PasswordEncoder passwordEncoder,
+    public AuthController(UserRepository userRepository, PasswordEncoder passwordEncoder,
             JWTGenerator jwtGenerator, AuthenticationManager authenticationManager) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
