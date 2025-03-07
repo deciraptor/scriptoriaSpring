@@ -1,18 +1,25 @@
 package fr.scriptoria.security.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import fr.scriptoria.models.entities.ProjectEntity;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "utilisateurs")
 public class UserEntity {
 
-    // attributes
+    // simple attributes
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,17 +34,24 @@ public class UserEntity {
     @Enumerated(EnumType.STRING)
     private RoleEnum role;
 
+    // table attributes
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<ProjectEntity> projects = new ArrayList<>();
+
     // constructors
 
     public UserEntity() {
     }
 
-    public UserEntity(Long userId, String nom, String nickName, String email, String password, RoleEnum role) {
+    public UserEntity(Long userId, String email, String nickName, String password, RoleEnum role,
+            List<ProjectEntity> projects) {
         this.userId = userId;
-        this.nickName = nickName;
         this.email = email;
+        this.nickName = nickName;
         this.password = password;
         this.role = role;
+        this.projects = projects;
     }
 
     // getters and setters
@@ -46,16 +60,8 @@ public class UserEntity {
         return userId;
     }
 
-    public void setId(Long userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
-    }
-
-    public String getNickName() {
-        return nickName;
-    }
-
-    public void setNickName(String nickName) {
-        this.nickName = nickName;
     }
 
     public String getEmail() {
@@ -64,6 +70,14 @@ public class UserEntity {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
     }
 
     public String getPassword() {
@@ -82,11 +96,12 @@ public class UserEntity {
         this.role = role;
     }
 
-    // toString method
-    @Override
-    public String toString() {
-        return "Utilisateur [userId=" + userId + ", pseudonyme=" + nickName + ", email=" + email
-                + ", motdepasse=" + password + ", role=" + role + "]";
+    public List<ProjectEntity> getProjects() {
+        return projects;
+    }
+
+    public void setProjects(List<ProjectEntity> projects) {
+        this.projects = projects;
     }
 
 }
