@@ -1,9 +1,9 @@
 package fr.scriptoria.repositories.mongoDbRepositories;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
 import fr.scriptoria.models.documents.BookDocument;
 
-public interface BookRepository extends JpaRepository<BookDocument, Long> {
+public interface BookRepository extends MongoRepository<BookDocument, Long> {
 
 }
