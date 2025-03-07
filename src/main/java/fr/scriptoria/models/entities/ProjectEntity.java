@@ -53,14 +53,14 @@ public class ProjectEntity {
 
     // table attributes OneToMany
 
-    @OneToMany(mappedBy = "projectEntity", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<NoteEntity> notes = new ArrayList<>();
+    // @OneToMany(mappedBy = "projectEntity", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    // private List<NoteEntity> notes = new ArrayList<>();
 
-    @OneToMany(mappedBy = "projectEntity", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<InspirationEntity> inspirations = new ArrayList<>();
+    // @OneToMany(mappedBy = "projectEntity", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    // private List<InspirationEntity> inspirations = new ArrayList<>();
 
-    @OneToMany(mappedBy = "projectEntity", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<CharacterEntity> characters = new ArrayList<>();
+    // @OneToMany(mappedBy = "projectEntity", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    // private List<CharacterEntity> characters = new ArrayList<>();
 
     // constructors
 

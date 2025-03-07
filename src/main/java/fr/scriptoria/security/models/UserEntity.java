@@ -36,7 +36,7 @@ public class UserEntity {
 
     // table attributes
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "userEntity", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<ProjectEntity> projects = new ArrayList<>();
 
     // constructors
