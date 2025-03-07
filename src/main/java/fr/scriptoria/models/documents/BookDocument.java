@@ -53,7 +53,7 @@ public class BookDocument {
         return chapters;
     }
 
-    public void setChapters(List<ChapterDocument> chapiters) {
+    public void setChapters(List<ChapterDocument> chapters) {
         this.chapters = chapters;
     }
 

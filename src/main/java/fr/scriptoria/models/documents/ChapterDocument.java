@@ -15,12 +15,13 @@ public class ChapterDocument {
     @Id
     private String id;
 
-    private String bookId; // link with MongoDB book
+    private String bookId; // Link with MongoDB book
 
     private String title;
 
     @ElementCollection
-    private List<SceneDocument> scenes; // Liste des scènes
+    private List<SceneDocument> scenes; 
+
     // constructors
 
     public ChapterDocument() {
@@ -32,6 +33,7 @@ public class ChapterDocument {
         this.title = title;
         this.scenes = scenes;
     }
+    
     // getters and setters
 
     public String getId() {
