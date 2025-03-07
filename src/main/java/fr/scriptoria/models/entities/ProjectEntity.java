@@ -24,7 +24,7 @@ public class ProjectEntity {
     private TypeEnum type;
     private String description;
     private LocalDateTime dateCreation;
-    private List<String> livres;
+    private String livre;
     private List<String> notes;
     private List<String> inspirations;
     private List<String> personnages;
@@ -33,7 +33,7 @@ public class ProjectEntity {
     }
 
     public ProjectEntity(String id, String title, String subTitle, TypeEnum type, String description,
-            LocalDateTime dateCreation, List<String> livres, List<String> notes, List<String> inspirations,
+            LocalDateTime dateCreation, String livre, List<String> notes, List<String> inspirations,
             List<String> personnages) {
         this.id = id;
         this.title = title;
@@ -41,7 +41,7 @@ public class ProjectEntity {
         this.type = type;
         this.description = description;
         this.dateCreation = dateCreation;
-        this.livres = livres;
+        this.livre = livre;
         this.notes = notes;
         this.inspirations = inspirations;
         this.personnages = personnages;
@@ -95,12 +95,12 @@ public class ProjectEntity {
         this.dateCreation = dateCreation;
     }
 
-    public List<String> getLivres() {
-        return livres;
+    public String getLivre() {
+        return livre;
     }
 
-    public void setLivres(List<String> livres) {
-        this.livres = livres;
+    public void setLivre(String livre) {
+        this.livre = livre;
     }
 
     public List<String> getNotes() {
