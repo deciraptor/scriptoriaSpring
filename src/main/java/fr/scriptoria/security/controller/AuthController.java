@@ -36,12 +36,12 @@ public class AuthController {
         this.authenticationManager = authenticationManager;
     }
 
-    // String email, String nickName, String password, RoleEnum role)
+    // String email, String nickName, String password, RoleEnum role
 
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody RegisterDTO registerDto) {
         if (userRepository.existsByEmail(registerDto.getEmail())) {
-            return new ResponseEntity<>("Username is already taken!", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Email is already taken!", HttpStatus.BAD_REQUEST);
         }
 
         UserEntity user = new UserEntity();

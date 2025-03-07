@@ -10,7 +10,7 @@ public class SceneDocument {
     // attributes
 
     @Id
-    private String id;
+    private Long sceneId;
 
     private String chapterId; // Link with MongoDB chapter
     private String content;
@@ -20,20 +20,20 @@ public class SceneDocument {
     public SceneDocument() {
     }
 
-    public SceneDocument(String id, String chapterId, String content) {
-        this.id = id;
+    public SceneDocument(Long sceneId, String chapterId, String content) {
+        this.sceneId = sceneId;
         this.chapterId = chapterId;
         this.content = content;
     }
 
     // getters and setters
 
-    public String getId() {
-        return id;
+    public Long getSceneId() {
+        return sceneId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setSceneId(Long sceneId) {
+        this.sceneId = sceneId;
     }
 
     public String getChapterId() {

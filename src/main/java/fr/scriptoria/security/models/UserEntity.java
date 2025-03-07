@@ -16,7 +16,7 @@ public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long userId;
 
     private String email;
 
@@ -32,8 +32,8 @@ public class UserEntity {
     public UserEntity() {
     }
 
-    public UserEntity(Integer id, String nom, String nickName, String email, String password, RoleEnum role) {
-        this.id = id;
+    public UserEntity(Long userId, String nom, String nickName, String email, String password, RoleEnum role) {
+        this.userId = userId;
         this.nickName = nickName;
         this.email = email;
         this.password = password;
@@ -42,12 +42,12 @@ public class UserEntity {
 
     // getters and setters
 
-    public Integer getId() {
-        return id;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(Long userId) {
+        this.userId = userId;
     }
 
     public String getNickName() {
@@ -85,7 +85,7 @@ public class UserEntity {
     // toString method
     @Override
     public String toString() {
-        return "Utilisateur [id=" + id + ", pseudonyme=" + nickName + ", email=" + email
+        return "Utilisateur [userId=" + userId + ", pseudonyme=" + nickName + ", email=" + email
                 + ", motdepasse=" + password + ", role=" + role + "]";
     }
 

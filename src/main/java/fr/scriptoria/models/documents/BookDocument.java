@@ -13,7 +13,7 @@ public class BookDocument {
     // attributes
 
     @Id
-    private String id;
+    private Long bookId;
 
     private String projectId; // Link with SQL project
 
@@ -25,20 +25,20 @@ public class BookDocument {
     public BookDocument() {
     }
 
-    public BookDocument(String id, String projectId, List<ChapterDocument> chapters) {
-        this.id = id;
+    public BookDocument(Long bookId, String projectId, List<ChapterDocument> chapters) {
+        this.bookId = bookId;
         this.projectId = projectId;
         this.chapters = chapters;
     }
 
     // getters and setters
 
-    public String getId() {
-        return id;
+    public Long getBookId() {
+        return bookId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setBookId(Long bookId) {
+        this.bookId = bookId;
     }
 
     public String getProjectId() {

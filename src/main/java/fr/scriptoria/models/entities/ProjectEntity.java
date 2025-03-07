@@ -1,36 +1,37 @@
 package fr.scriptoria.models.entities;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import fr.scriptoria.models.documents.BookDocument;
 import fr.scriptoria.models.enumeration.TypeEnum;
-import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "projets")
 public class ProjectEntity {
 
-    // attributes
+    // simple attributes
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private Long projectId;
 
     private String title;
 
     private String subTitle;
 
     @Enumerated(EnumType.STRING)
-    private TypeEnum type;
+    private TypeEnum typeProject;
 
     private String description;
 
@@ -39,43 +40,53 @@ public class ProjectEntity {
 
     private String bookId;
 
-    @ElementCollection
-    private List<String> notes;
+    // table attributes
 
-    @ElementCollection
-    private List<String> inspirations;
+    @ManyToOne
+    @JoinColumn(name = "", referencedColumnName = "")
+    private NoteEntity note;
 
-    @ElementCollection
-    private List<String> characters;
+    @ManyToOne
+    @JoinColumn(name = "", referencedColumnName = "")
+    private InspirationEntity Inspiration;
+
+    @ManyToOne
+    @JoinColumn(name = "", referencedColumnName = "")
+    private CharacterEntity character;
+
+    @ManyToOne
+    @JoinColumn(name = "", referencedColumnName = "")
+    private BookDocument book;
 
     // constructors
 
     public ProjectEntity() {
     }
 
-    public ProjectEntity(String id, String title, String subTitle, TypeEnum type, String description,
-            LocalDateTime dateCreation, String bookId, List<String> notes, List<String> inspirations,
-            List<String> characters) {
-        this.id = id;
+    public ProjectEntity(Long projectId, String title, String subTitle, TypeEnum typeProject, String description,
+            LocalDateTime dateCreation, String bookId, NoteEntity note, InspirationEntity inspiration,
+            CharacterEntity character, BookDocument book) {
+        this.projectId = projectId;
         this.title = title;
         this.subTitle = subTitle;
-        this.type = type;
+        this.typeProject = typeProject;
         this.description = description;
         this.dateCreation = dateCreation;
         this.bookId = bookId;
-        this.notes = notes;
-        this.inspirations = inspirations;
-        this.characters = characters;
+        this.note = note;
+        Inspiration = inspiration;
+        this.character = character;
+        this.book = book;
     }
 
     // getters and setters
 
-    public String getId() {
-        return id;
+    public Long getProjectId() {
+        return projectId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setProjectId(Long projectId) {
+        this.projectId = projectId;
     }
 
     public String getTitle() {
@@ -94,12 +105,12 @@ public class ProjectEntity {
         this.subTitle = subTitle;
     }
 
-    public TypeEnum getType() {
-        return type;
+    public TypeEnum getTypeProject() {
+        return typeProject;
     }
 
-    public void setType(TypeEnum type) {
-        this.type = type;
+    public void setTypeProject(TypeEnum typeProject) {
+        this.typeProject = typeProject;
     }
 
     public String getDescription() {
@@ -126,28 +137,36 @@ public class ProjectEntity {
         this.bookId = bookId;
     }
 
-    public List<String> getNotes() {
-        return notes;
+    public NoteEntity getNote() {
+        return note;
     }
 
-    public void setNotes(List<String> notes) {
-        this.notes = notes;
+    public void setNote(NoteEntity note) {
+        this.note = note;
     }
 
-    public List<String> getInspirations() {
-        return inspirations;
+    public InspirationEntity getInspiration() {
+        return Inspiration;
     }
 
-    public void setInspirations(List<String> inspirations) {
-        this.inspirations = inspirations;
+    public void setInspiration(InspirationEntity inspiration) {
+        Inspiration = inspiration;
     }
 
-    public List<String> getCharacters() {
-        return characters;
+    public CharacterEntity getCharacter() {
+        return character;
     }
 
-    public void setCharacters(List<String> characters) {
-        this.characters = characters;
+    public void setCharacter(CharacterEntity character) {
+        this.character = character;
+    }
+
+    public BookDocument getBook() {
+        return book;
+    }
+
+    public void setBook(BookDocument book) {
+        this.book = book;
     }
 
 }
