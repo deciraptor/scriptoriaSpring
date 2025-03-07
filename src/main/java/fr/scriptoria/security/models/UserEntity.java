@@ -8,20 +8,27 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-//attributes
 @Entity
-@Table(name = "Utilisateurs")
+@Table(name = "utilisateurs")
 public class UserEntity {
+
+    // attributes
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private String email;
+
     private String nickName;
+
     private String password;
+
     @Enumerated(EnumType.STRING)
     private RoleEnum role;
 
     // constructors
+
     public UserEntity() {
     }
 
@@ -34,6 +41,7 @@ public class UserEntity {
     }
 
     // getters and setters
+
     public Integer getId() {
         return id;
     }
@@ -74,7 +82,7 @@ public class UserEntity {
         this.role = role;
     }
 
-    //toString method
+    // toString method
     @Override
     public String toString() {
         return "Utilisateur [id=" + id + ", pseudonyme=" + nickName + ", email=" + email

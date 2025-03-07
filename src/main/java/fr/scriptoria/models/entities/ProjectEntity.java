@@ -3,7 +3,10 @@ package fr.scriptoria.models.entities;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import fr.scriptoria.models.enumeration.TypeEnum;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -13,39 +16,59 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "Projets")
+@Table(name = "projets")
 public class ProjectEntity {
+
+    // attributes
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
+
     private String title;
+
     private String subTitle;
+
     @Enumerated(EnumType.STRING)
     private TypeEnum type;
+
     private String description;
+
+    @CreationTimestamp
     private LocalDateTime dateCreation;
-    private String livre;
+
+    private String bookId;
+
+    @ElementCollection
     private List<String> notes;
+
+    @ElementCollection
     private List<String> inspirations;
-    private List<String> personnages;
+
+    @ElementCollection
+    private List<String> characters;
+
+    // constructors
 
     public ProjectEntity() {
     }
 
     public ProjectEntity(String id, String title, String subTitle, TypeEnum type, String description,
-            LocalDateTime dateCreation, String livre, List<String> notes, List<String> inspirations,
-            List<String> personnages) {
+            LocalDateTime dateCreation, String bookId, List<String> notes, List<String> inspirations,
+            List<String> characters) {
         this.id = id;
         this.title = title;
         this.subTitle = subTitle;
         this.type = type;
         this.description = description;
         this.dateCreation = dateCreation;
-        this.livre = livre;
+        this.bookId = bookId;
         this.notes = notes;
         this.inspirations = inspirations;
-        this.personnages = personnages;
+        this.characters = characters;
     }
+
+    // getters and setters
 
     public String getId() {
         return id;
@@ -95,12 +118,12 @@ public class ProjectEntity {
         this.dateCreation = dateCreation;
     }
 
-    public String getLivre() {
-        return livre;
+    public String getBookId() {
+        return bookId;
     }
 
-    public void setLivre(String livre) {
-        this.livre = livre;
+    public void setBookId(String bookId) {
+        this.bookId = bookId;
     }
 
     public List<String> getNotes() {
@@ -119,12 +142,12 @@ public class ProjectEntity {
         this.inspirations = inspirations;
     }
 
-    public List<String> getPersonnages() {
-        return personnages;
+    public List<String> getCharacters() {
+        return characters;
     }
 
-    public void setPersonnages(List<String> personnages) {
-        this.personnages = personnages;
+    public void setCharacters(List<String> characters) {
+        this.characters = characters;
     }
 
 }
