@@ -2,5 +2,10 @@ package fr.scriptoria.models.enumeration;
 
 public enum TypeEnum {
     ROMAN,
-    AUTOBIOGRAPHIE
+    AUTOBIOGRAPHIE,
+    ESSAI,
+    NOUVELLE,
+    EPISTOLAIRE,
+    THEATRE,
+    POESIE
 }

@@ -38,8 +38,6 @@ public class ProjectEntity {
     @CreationTimestamp
     private LocalDateTime dateCreation;
 
-    private String bookId;
-
     // table attributes ManyToOne
 
     @ManyToOne
@@ -70,7 +68,6 @@ public class ProjectEntity {
         this.typeProject = typeProject;
         this.description = description;
         this.dateCreation = dateCreation;
-        this.bookId = bookId;
         this.userEntity = userEntity;
     }
 
@@ -124,13 +121,6 @@ public class ProjectEntity {
         this.dateCreation = dateCreation;
     }
 
-    public String getBookId() {
-        return bookId;
-    }
-
-    public void setBookId(String bookId) {
-        this.bookId = bookId;
-    }
 
     public UserEntity getUserEntity() {
         return userEntity;
@@ -146,7 +136,7 @@ public class ProjectEntity {
     public String toString() {
         return "ProjectEntity [projectId=" + projectId + ", title=" + title + ", subTitle=" + subTitle
                 + ", typeProject=" + typeProject + ", description=" + description + ", dateCreation=" + dateCreation
-                + ", bookId=" + bookId + ", userEntity=" + userEntity + "]";
+                + ", userEntity=" + userEntity + "]";
     }
 
 }
