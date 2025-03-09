@@ -41,7 +41,7 @@ public class ProjectEntity {
     // table attributes ManyToOne
 
     @ManyToOne
-    @JoinColumn(name = "userEntity_id", referencedColumnName = "userEntityId")
+    @JoinColumn(name = "user_entity_id", referencedColumnName = "userEntityId")
     private UserEntity userEntity;
 
     // table attributes OneToMany

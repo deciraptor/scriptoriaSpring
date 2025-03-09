@@ -15,14 +15,14 @@ import fr.scriptoria.models.entities.ProjectEntity;
 import fr.scriptoria.repositories.mySqlRepositories.ProjectRepository;
 
 @RestController
-@RequestMapping("/api/projects")
+@RequestMapping("/api/project")
 public class ProjectController {
 
     @Autowired
     private ProjectRepository projectRepository;
 
     // Créer un nouveau projet
-    @PostMapping
+    @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
     public ProjectEntity createProject(@RequestBody ProjectEntity project) {
         // Vous pouvez ajouter ici des validations, ou définir des valeurs par défaut
@@ -30,7 +30,7 @@ public class ProjectController {
     }
 
     // Récupérer tous les projets
-    @GetMapping
+    @GetMapping("/show")
     public List<ProjectEntity> getAllProjects() {
         return projectRepository.findAll();
     }
