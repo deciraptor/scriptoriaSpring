@@ -19,10 +19,10 @@ import fr.scriptoria.security.service.CustomUserDetailsService;
 @EnableWebSecurity // active la sécurité web
 public class SecurityConfig {
 
-    private final CustomUserDetailsService userDetailsService;
+    //private final CustomUserDetailsService userDetailsService;
 
     public SecurityConfig(CustomUserDetailsService userDetailsService) {
-        this.userDetailsService = userDetailsService;
+        //this.userDetailsService = userDetailsService;
     }
 
     @Bean // ici on configure les accès aux ressources (API)
