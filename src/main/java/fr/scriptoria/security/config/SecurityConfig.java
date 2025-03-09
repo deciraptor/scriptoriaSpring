@@ -15,7 +15,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import fr.scriptoria.security.jwt.JWTAuthentificationFilter;
 import fr.scriptoria.security.service.CustomUserDetailsService;
 
-@Configuration // indique à Spring que cette classe est uneclasse de configuration
+@Configuration // indique à Spring que cette classe est une classe de configuration
 @EnableWebSecurity // active la sécurité web
 public class SecurityConfig {
 
