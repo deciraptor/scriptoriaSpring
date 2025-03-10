@@ -1,19 +1,24 @@
 package fr.scriptoria.models.entities;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.hibernate.annotations.CreationTimestamp;
 
 import fr.scriptoria.models.enumeration.TypeEnum;
 import fr.scriptoria.security.models.UserEntity;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -46,13 +51,15 @@ public class ProjectEntity {
 
     // table attributes OneToMany
 
-    // @OneToMany(mappedBy = "projectEntity", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    // private List<NoteEntity> notes = new ArrayList<>();
+    @OneToMany(mappedBy = "projectEntity", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<NoteEntity> notes = new ArrayList<>();
 
-    // @OneToMany(mappedBy = "projectEntity", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    // @OneToMany(mappedBy = "projectEntity", cascade = CascadeType.ALL, fetch =
+    // FetchType.EAGER)
     // private List<InspirationEntity> inspirations = new ArrayList<>();
 
-    // @OneToMany(mappedBy = "projectEntity", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    // @OneToMany(mappedBy = "projectEntity", cascade = CascadeType.ALL, fetch =
+    // FetchType.EAGER)
     // private List<CharacterEntity> characters = new ArrayList<>();
 
     // constructors
@@ -61,7 +68,7 @@ public class ProjectEntity {
     }
 
     public ProjectEntity(Long projectId, String title, String subTitle, TypeEnum typeProject, String description,
-            LocalDateTime dateCreation, String bookId, UserEntity userEntity) {
+            LocalDateTime dateCreation, String bookId, UserEntity userEntity, List<NoteEntity> notes) {
         this.projectId = projectId;
         this.title = title;
         this.subTitle = subTitle;
@@ -69,6 +76,7 @@ public class ProjectEntity {
         this.description = description;
         this.dateCreation = dateCreation;
         this.userEntity = userEntity;
+        this.notes = notes;
     }
 
     // getters and setters
@@ -121,7 +129,6 @@ public class ProjectEntity {
         this.dateCreation = dateCreation;
     }
 
-
     public UserEntity getUserEntity() {
         return userEntity;
     }
@@ -130,13 +137,12 @@ public class ProjectEntity {
         this.userEntity = userEntity;
     }
 
-    // toString method
+    public List<NoteEntity> getNotes() {
+        return notes;
+    }
 
-    @Override
-    public String toString() {
-        return "ProjectEntity [projectId=" + projectId + ", title=" + title + ", subTitle=" + subTitle
-                + ", typeProject=" + typeProject + ", description=" + description + ", dateCreation=" + dateCreation
-                + ", userEntity=" + userEntity + "]";
+    public void setNotes(List<NoteEntity> notes) {
+        this.notes = notes;
     }
 
 }
