@@ -4,7 +4,7 @@ import fr.scriptoria.models.enumeration.TypeEnum;
 
 public class ProjectOutpoutDTO {
 
-private String title;
+    private String title;
 
     private String subTitle;
 
@@ -44,7 +44,4 @@ private String title;
         this.description = description;
     }
 
-    
-
-    
 }
