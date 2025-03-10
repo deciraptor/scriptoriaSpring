@@ -23,7 +23,7 @@ public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userEntityId;
+    private Integer userEntityId;
 
     private String email;
 
@@ -44,7 +44,7 @@ public class UserEntity {
     public UserEntity() {
     }
 
-    public UserEntity(Long userEntityId, String email, String nickName, String password, RoleEnum role,
+    public UserEntity(Integer userEntityId, String email, String nickName, String password, RoleEnum role,
             List<ProjectEntity> projects) {
         this.userEntityId = userEntityId;
         this.email = email;
@@ -56,11 +56,11 @@ public class UserEntity {
 
     // getters and setters
 
-    public Long getUserEntityId() {
+    public Integer getUserEntityId() {
         return userEntityId;
     }
 
-    public void setUserEntityId(Long userEntityId) {
+    public void setUserEntityId(Integer userEntityId) {
         this.userEntityId = userEntityId;
     }
 

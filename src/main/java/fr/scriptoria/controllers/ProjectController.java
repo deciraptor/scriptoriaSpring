@@ -11,27 +11,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import fr.scriptoria.models.entities.ProjectEntity;
-import fr.scriptoria.repositories.mySqlRepositories.ProjectRepository;
+import fr.scriptoria.dto.ProjectDTO;
+import fr.scriptoria.dto.ProjectOutpoutDTO;
+import fr.scriptoria.services.ProjectService;
 
 @RestController
 @RequestMapping("/api/project")
 public class ProjectController {
 
     @Autowired
-    private ProjectRepository projectRepository;
+    private ProjectService  projectService;
 
     // Créer un nouveau projet
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
-    public ProjectEntity createProject(@RequestBody ProjectEntity project) {
-        // Vous pouvez ajouter ici des validations, ou définir des valeurs par défaut
-        return projectRepository.save(project);
+    public ProjectOutpoutDTO createProject(@RequestBody ProjectDTO projectDTO) {
+
+        return projectService.createProject(projectDTO);
     }
 
     // Récupérer tous les projets
     @GetMapping("/show")
-    public List<ProjectEntity> getAllProjects() {
-        return projectRepository.findAll();
+    public List<ProjectOutpoutDTO> getAllProjects() {
+        return projectService.getAllProjects();
     }
 }

@@ -33,7 +33,7 @@ public class NoteEntity {
 
     @ManyToOne
     @JoinColumn(name = "project_id", referencedColumnName = "projectId")
-    private ProjectEntity project;
+    private ProjectEntity projectEntity;
 
     // constructors
 
@@ -41,12 +41,12 @@ public class NoteEntity {
     }
 
     public NoteEntity(Long noteId, String title, String description, LocalDateTime dateCreation,
-            ProjectEntity project) {
+            ProjectEntity projectEntity) {
         this.noteId = noteId;
         this.title = title;
         this.description = description;
         this.dateCreation = dateCreation;
-        this.project = project;
+        this.projectEntity = projectEntity;
     }
 
     // getters and setters
@@ -84,11 +84,11 @@ public class NoteEntity {
     }
 
     public ProjectEntity getProject() {
-        return project;
+        return projectEntity;
     }
 
-    public void setProject(ProjectEntity project) {
-        this.project = project;
+    public void setProject(ProjectEntity projectEntity) {
+        this.projectEntity = projectEntity;
     }
 
 }
