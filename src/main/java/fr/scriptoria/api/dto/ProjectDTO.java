@@ -4,6 +4,8 @@ import fr.scriptoria.api.models.enumeration.TypeEnum;
 
 public class ProjectDTO {
 
+    // simple attributes
+
     private String title;
 
     private String subTitle;
@@ -13,6 +15,8 @@ public class ProjectDTO {
     private String description;
 
     private Long userEntityId;
+
+    // simple getters & setters
 
     public String getTitle() {
         return title;
