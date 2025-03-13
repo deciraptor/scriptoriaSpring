@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,13 +16,13 @@ import fr.scriptoria.api.dto.ProjectDTO;
 import fr.scriptoria.api.dto.ProjectOutpoutDTO;
 import fr.scriptoria.api.services.ProjectService;
 
-//manque cross origine
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowCredentials = "true")
 @RestController
 @RequestMapping("/api/project")
 public class ProjectController {
 
     @Autowired
-    private ProjectService  projectService;
+    private ProjectService projectService;
 
     // Créer un nouveau projet
     @PostMapping("/create")

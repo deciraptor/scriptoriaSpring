@@ -61,7 +61,11 @@ public class ProjectEntity {
 
     // @OneToMany(mappedBy = "projectEntity", cascade = CascadeType.ALL, fetch =
     // FetchType.EAGER)
-    // private List<CharacterEntity> characters = new ArrayList<>();
+    // private List<CharacterDocument> characters = new ArrayList<>();
+
+    // @OneToMany(mappedBy = "projectEntity", cascade = CascadeType.ALL, fetch =
+    // FetchType.EAGER)
+    // private List<BookDocument> characters = new ArrayList<>();
 
     // constructors
 
