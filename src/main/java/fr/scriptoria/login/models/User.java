@@ -1,19 +1,21 @@
 package fr.scriptoria.login.models;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
+import fr.scriptoria.api.models.entities.ProjectEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 @Entity
-@Table(name = "users",
-       uniqueConstraints = {
-           @UniqueConstraint(columnNames = "username"),
-           @UniqueConstraint(columnNames = "email")
-       })
+@Table(name = "users", uniqueConstraints = {
+    @UniqueConstraint(columnNames = "username"),
+    @UniqueConstraint(columnNames = "email")
+})
 public class User {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,18 +35,30 @@ public class User {
   private String password;
 
   @ManyToMany(fetch = FetchType.LAZY)
-  @JoinTable(name = "user_roles", 
-             joinColumns = @JoinColumn(name = "user_id"),
-             inverseJoinColumns = @JoinColumn(name = "role_id"))
+  @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
   private Set<Role> roles = new HashSet<>();
+
+  @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+  private List<ProjectEntity> projects = new ArrayList<>();
 
   public User() {
   }
 
-  public User(String username, String email, String password) {
+  public User(@NotBlank @Size(max = 20) String username, @NotBlank @Size(max = 50) @Email String email,
+      @NotBlank @Size(max = 120) String password) {
     this.username = username;
     this.email = email;
     this.password = password;
+  }
+
+  public User(Long id, @NotBlank @Size(max = 20) String username, @NotBlank @Size(max = 50) @Email String email,
+      @NotBlank @Size(max = 120) String password, Set<Role> roles, List<ProjectEntity> projects) {
+    this.id = id;
+    this.username = username;
+    this.email = email;
+    this.password = password;
+    this.roles = roles;
+    this.projects = projects;
   }
 
   public Long getId() {
@@ -86,4 +100,13 @@ public class User {
   public void setRoles(Set<Role> roles) {
     this.roles = roles;
   }
+
+  public List<ProjectEntity> getProjects() {
+    return projects;
+  }
+
+  public void setProjects(List<ProjectEntity> projects) {
+    this.projects = projects;
+  }
+
 }

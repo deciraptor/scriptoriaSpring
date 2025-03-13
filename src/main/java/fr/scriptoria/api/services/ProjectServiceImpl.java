@@ -15,7 +15,7 @@ import fr.scriptoria.login.models.User;
 import fr.scriptoria.login.repository.UserRepository;
 
 @Service
-public class ProjectServiceImpl implements ProjectService{
+public class ProjectServiceImpl implements ProjectService {
 
     @Autowired
     private ProjectRepository projectRepository;
@@ -38,10 +38,6 @@ public class ProjectServiceImpl implements ProjectService{
 
         userRepository.save(userEntity);
 
-        return projectEntity;
-
-        
-
         ProjectOutpoutDTO projectOutpoutDTO = new ProjectOutpoutDTO();
 
         BeanUtils.copyProperties(projectEntity, projectOutpoutDTO);
@@ -55,12 +51,12 @@ public class ProjectServiceImpl implements ProjectService{
 
         List<ProjectOutpoutDTO> projects = new ArrayList<ProjectOutpoutDTO>();
 
-        for (ProjectEntity projectEntity : projectRepository.findAll() ) {
+        for (ProjectEntity projectEntity : projectRepository.findAll()) {
             ProjectOutpoutDTO projectOutpoutDTO = new ProjectOutpoutDTO();
             BeanUtils.copyProperties(projectEntity, projectOutpoutDTO);
             projects.add(projectOutpoutDTO);
         }
-        
+
         return projects;
 
     }

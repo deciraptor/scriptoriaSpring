@@ -47,8 +47,8 @@ public class ProjectEntity {
     // table attributes ManyToOne
 
     @ManyToOne
-    @JoinColumn(name = "user_entity_id", referencedColumnName = "userEntityId")
-    private User userEntity;
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
 
     // table attributes OneToMany
 
@@ -69,14 +69,14 @@ public class ProjectEntity {
     }
 
     public ProjectEntity(Long projectId, String title, String subTitle, TypeEnum typeProject, String description,
-            LocalDateTime dateCreation, String bookId, User userEntity, List<NoteEntity> notes) {
+            LocalDateTime dateCreation, String bookId, User user, List<NoteEntity> notes) {
         this.projectId = projectId;
         this.title = title;
         this.subTitle = subTitle;
         this.typeProject = typeProject;
         this.description = description;
         this.dateCreation = dateCreation;
-        this.userEntity = userEntity;
+        this.user = user;
         this.notes = notes;
     }
 
@@ -131,11 +131,11 @@ public class ProjectEntity {
     }
 
     public User getUserEntity() {
-        return userEntity;
+        return user;
     }
 
-    public void setUserEntity(User userEntity) {
-        this.userEntity = userEntity;
+    public void setUserEntity(User user) {
+        this.user = user;
     }
 
     public List<NoteEntity> getNotes() {
