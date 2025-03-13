@@ -11,7 +11,6 @@ import fr.scriptoria.api.dto.ProjectDTO;
 import fr.scriptoria.api.dto.ProjectOutpoutDTO;
 import fr.scriptoria.api.models.entities.ProjectEntity;
 import fr.scriptoria.api.repositories.mySqlRepositories.ProjectRepository;
-import fr.scriptoria.login.models.User;
 import fr.scriptoria.login.repository.UserRepository;
 
 @Service
@@ -30,13 +29,13 @@ public class ProjectServiceImpl implements ProjectService{
 
         BeanUtils.copyProperties(projectDTO, projectEntity);
 
-        User userEntity = userRepository.findById(projectDTO.getUserEntityId()).get();
+        //User userEntity = userRepository.findById(projectDTO.getUserEntityId()).get();
 
-        projectEntity.setUserEntity(userEntity);
+        //projectEntity.setUserEntity(userEntity);
 
-        userEntity.getProjects().add(projectEntity);
+        //userEntity.getProjects().add(projectEntity);
 
-        userRepository.save(userEntity);
+        //userRepository.save(userEntity);
 
         //return projectEntity;
 

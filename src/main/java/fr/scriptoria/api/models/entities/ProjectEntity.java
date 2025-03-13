@@ -17,8 +17,6 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -46,9 +44,9 @@ public class ProjectEntity {
 
     // table attributes ManyToOne
 
-    @ManyToOne
-    @JoinColumn(name = "user_entity_id", referencedColumnName = "userEntityId")
-    private User userEntity;
+    // @ManyToOne
+    // @JoinColumn(name = "user_entity_id", referencedColumnName = "userEntityId")
+    // private User userEntity;
 
     // table attributes OneToMany
 
@@ -76,7 +74,7 @@ public class ProjectEntity {
         this.typeProject = typeProject;
         this.description = description;
         this.dateCreation = dateCreation;
-        this.userEntity = userEntity;
+        //this.userEntity = userEntity;
         this.notes = notes;
     }
 
@@ -130,13 +128,13 @@ public class ProjectEntity {
         this.dateCreation = dateCreation;
     }
 
-    public User getUserEntity() {
-        return userEntity;
-    }
+    // public User getUserEntity() {
+    //     return userEntity;
+    // }
 
-    public void setUserEntity(User userEntity) {
-        this.userEntity = userEntity;
-    }
+    // public void setUserEntity(User userEntity) {
+    //     this.userEntity = userEntity;
+    // }
 
     public List<NoteEntity> getNotes() {
         return notes;

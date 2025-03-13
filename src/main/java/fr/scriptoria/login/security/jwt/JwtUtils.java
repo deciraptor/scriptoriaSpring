@@ -48,7 +48,7 @@ public class JwtUtils {
   }
 
   public ResponseCookie getCleanJwtCookie() {
-    ResponseCookie cookie = ResponseCookie.from(jwtCookie, null).path("/api").build();
+    ResponseCookie cookie = ResponseCookie.from(jwtCookie, "").path("/api").maxAge(0).build();
     return cookie;
   }
 

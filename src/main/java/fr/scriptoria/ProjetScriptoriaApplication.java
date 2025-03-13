@@ -6,10 +6,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 @SpringBootApplication
-@EnableJpaRepositories(basePackages = { "fr.scriptoria.repositories.mySqlRepositories",
-		"fr.scriptoria.security.repository" })
-@EnableMongoRepositories(basePackages = "fr.scriptoria.repositories.mongoDbRepositories")
-
+@EnableJpaRepositories(basePackages = { "fr.scriptoria.api.repositories.mySqlRepositories",
+		"fr.scriptoria.login.repository" })
+@EnableMongoRepositories(basePackages = "fr.scriptoria.api.repositories.mongoDbRepositories")
 public class ProjetScriptoriaApplication {
 
 	public static void main(String[] args) {

@@ -15,7 +15,7 @@ import fr.scriptoria.api.dto.ProjectDTO;
 import fr.scriptoria.api.dto.ProjectOutpoutDTO;
 import fr.scriptoria.api.services.ProjectService;
 
-
+//manque cross origine
 @RestController
 @RequestMapping("/api/project")
 public class ProjectController {
