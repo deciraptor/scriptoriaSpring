@@ -12,7 +12,7 @@ public class ProjectDTO {
 
     private String description;
 
-    private Integer userEntityId;
+    private Long userEntityId;
 
     public String getTitle() {
         return title;
@@ -46,11 +46,11 @@ public class ProjectDTO {
         this.description = description;
     }
 
-    public Integer getUserEntityId() {
+    public Long getUserEntityId() {
         return userEntityId;
     }
 
-    public void setUserEntityId(Integer userEntityId) {
+    public void setUserEntityId(Long userEntityId) {
         this.userEntityId = userEntityId;
     }
 
