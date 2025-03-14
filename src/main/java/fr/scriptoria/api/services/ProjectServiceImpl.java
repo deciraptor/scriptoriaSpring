@@ -52,6 +52,7 @@ public class ProjectServiceImpl implements ProjectService {
         // Création automatique d'un livre (BookDocument) associé au projet
         BookDocument book = new BookDocument();
         book.setProjectId(projectEntity.getProjectId());
+        book.setChapters(new ArrayList<>());
         BookDocument savedBook = bookRepository.save(book);
 
         // Création automatique d'un premier chapitre (ChapterDocument) pour le livre

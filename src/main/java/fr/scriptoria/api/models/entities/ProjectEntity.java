@@ -7,7 +7,6 @@ import java.util.List;
 import org.hibernate.annotations.CreationTimestamp;
 
 import fr.scriptoria.login.models.User;
-
 import fr.scriptoria.api.models.enumeration.TypeEnum;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -55,6 +54,9 @@ public class ProjectEntity {
     @OneToMany(mappedBy = "projectEntity", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<NoteEntity> notes = new ArrayList<>();
 
+    // @OneToMany(mappedBy = "projectEntity", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    // private List<BookDocument> books = new ArrayList<>();
+
     // @OneToMany(mappedBy = "projectEntity", cascade = CascadeType.ALL, fetch =
     // FetchType.EAGER)
     // private List<InspirationEntity> inspirations = new ArrayList<>();
@@ -63,17 +65,13 @@ public class ProjectEntity {
     // FetchType.EAGER)
     // private List<CharacterDocument> characters = new ArrayList<>();
 
-    // @OneToMany(mappedBy = "projectEntity", cascade = CascadeType.ALL, fetch =
-    // FetchType.EAGER)
-    // private List<BookDocument> characters = new ArrayList<>();
-
     // constructors
 
     public ProjectEntity() {
     }
 
     public ProjectEntity(Long projectId, String title, String subTitle, TypeEnum typeProject, String description,
-            LocalDateTime dateCreation, String bookId, User user, List<NoteEntity> notes) {
+            LocalDateTime dateCreation, User user, List<NoteEntity> notes) {
         this.projectId = projectId;
         this.title = title;
         this.subTitle = subTitle;
@@ -85,7 +83,6 @@ public class ProjectEntity {
     }
 
     // getters and setters
-
     public Long getProjectId() {
         return projectId;
     }
@@ -150,4 +147,11 @@ public class ProjectEntity {
         this.notes = notes;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

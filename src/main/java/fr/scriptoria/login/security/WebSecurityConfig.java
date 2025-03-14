@@ -63,15 +63,19 @@ public class WebSecurityConfig {
     http.csrf(csrf -> csrf.disable())
         .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
         .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-        .authorizeHttpRequests(auth -> 
-          auth.requestMatchers("/api/auth/**").permitAll()
+        .authorizeHttpRequests(auth -> auth
+              .requestMatchers("/api/auth/**").permitAll()
               .requestMatchers("/api/test/**").permitAll()
               .requestMatchers(HttpMethod.POST, "/api/project/**").permitAll()
-
+              .requestMatchers(HttpMethod.GET, "/api/project/**").permitAll()
+              .requestMatchers(HttpMethod.GET, "/api/books/**").permitAll()
 
 
               .anyRequest().authenticated()
         );
+
+        //.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)); //AJOUT POUR POSTMAN
+
     
     http.authenticationProvider(authenticationProvider());
 
