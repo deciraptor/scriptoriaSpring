@@ -15,7 +15,7 @@ public class BookDocument {
     @Id
     private Long bookId;
 
-    private String projectId; // Link with SQL project
+    private Long projectId; // Link with SQL project
 
     @ElementCollection
     private List<ChapterDocument> chapters;
@@ -25,7 +25,7 @@ public class BookDocument {
     public BookDocument() {
     }
 
-    public BookDocument(Long bookId, String projectId, List<ChapterDocument> chapters) {
+    public BookDocument(Long bookId, Long projectId, List<ChapterDocument> chapters) {
         this.bookId = bookId;
         this.projectId = projectId;
         this.chapters = chapters;
@@ -41,11 +41,11 @@ public class BookDocument {
         this.bookId = bookId;
     }
 
-    public String getProjectId() {
+    public Long getProjectId() {
         return projectId;
     }
 
-    public void setProjectId(String projectId) {
+    public void setProjectId(Long projectId) {
         this.projectId = projectId;
     }
 

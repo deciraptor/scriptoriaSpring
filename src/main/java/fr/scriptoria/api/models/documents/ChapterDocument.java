@@ -1,10 +1,7 @@
 package fr.scriptoria.api.models.documents;
 
-import java.util.List;
-
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Id;
 
 @Document(collection = "chapitres")
@@ -15,25 +12,27 @@ public class ChapterDocument {
     @Id
     private Long chapterId;
 
-    private String bookId; // Link with MongoDB book
+    private Long bookId; // Link with MongoDB book
 
-    private String title;
+    private String chapterTitle;
 
-    @ElementCollection
-    private List<SceneDocument> scenes; 
+    // @ElementCollection
+    // private List<SceneDocument> scenes;
+
+    private String text;
 
     // constructors
 
     public ChapterDocument() {
     }
 
-    public ChapterDocument(Long chapterId, String bookId, String title, List<SceneDocument> scenes) {
+    public ChapterDocument(Long chapterId, Long bookId, String chapterTitle, String text) {
         this.chapterId = chapterId;
         this.bookId = bookId;
-        this.title = title;
-        this.scenes = scenes;
+        this.chapterTitle = chapterTitle;
+        this.text = text;
     }
-    
+
     // getters and setters
 
     public Long getChapterId() {
@@ -44,28 +43,28 @@ public class ChapterDocument {
         this.chapterId = chapterId;
     }
 
-    public String getBookId() {
+    public Long getBookId() {
         return bookId;
     }
 
-    public void setBookId(String bookId) {
+    public void setBookId(Long bookId) {
         this.bookId = bookId;
     }
 
-    public String getTitle() {
-        return title;
+    public String getChapterTitle() {
+        return chapterTitle;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setChapterTitle(String chapterTitle) {
+        this.chapterTitle = chapterTitle;
     }
 
-    public List<SceneDocument> getScenes() {
-        return scenes;
+    public String getText() {
+        return text;
     }
 
-    public void setScenes(List<SceneDocument> scenes) {
-        this.scenes = scenes;
+    public void setText(String text) {
+        this.text = text;
     }
 
 }
