@@ -9,6 +9,7 @@ import fr.scriptoria.api.dto.ChapterDTO;
 import fr.scriptoria.api.services.BookService;
 
 import java.util.List;
+import java.util.UUID;
 
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowCredentials = "true")
 @RestController
@@ -27,7 +28,7 @@ public class BookController {
 
     @PostMapping("/{bookId}/chapters")
     @ResponseStatus(HttpStatus.CREATED)
-    public ChapterDTO createChapter(@PathVariable Long bookId, @RequestBody ChapterDTO chapterDTO) {
+    public ChapterDTO createChapter(@PathVariable UUID bookId, @RequestBody ChapterDTO chapterDTO) {
         return bookService.createChapter(bookId, chapterDTO);
     }
 

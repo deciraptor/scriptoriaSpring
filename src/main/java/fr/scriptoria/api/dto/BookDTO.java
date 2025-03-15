@@ -1,18 +1,19 @@
 package fr.scriptoria.api.dto;
 
 import java.util.List;
+import java.util.UUID;
 
 public class BookDTO {
-    private Long bookId;
+    private UUID bookId;
     private Long projectId;
     private List<ChapterDTO> chapters;
 
     // Getters et Setters
-    public Long getBookId() {
+    public UUID getBookId() {
         return bookId;
     }
 
-    public void setBookId(Long bookId) {
+    public void setBookId(UUID bookId) {
         this.bookId = bookId;
     }
 

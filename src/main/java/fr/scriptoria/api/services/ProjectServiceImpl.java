@@ -2,6 +2,7 @@ package fr.scriptoria.api.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,6 +54,7 @@ public class ProjectServiceImpl implements ProjectService {
         BookDocument book = new BookDocument();
         book.setProjectId(projectEntity.getProjectId());
         book.setChapters(new ArrayList<>());
+        book.setBookId(UUID.randomUUID());
         BookDocument savedBook = bookRepository.save(book);
 
         // Création automatique d'un premier chapitre (ChapterDocument) pour le livre
@@ -86,6 +88,23 @@ public class ProjectServiceImpl implements ProjectService {
 
         return projects;
 
+    }
+
+    @Override
+    public List<ProjectOutpoutDTO> getAllProjectByUserId(Long userId) {
+        
+
+        List<ProjectOutpoutDTO> projects = new ArrayList<ProjectOutpoutDTO>();
+
+        User user  = userRepository.findById(userId).get();
+
+        for (ProjectEntity projectEntity : user.getProjects()) {
+            ProjectOutpoutDTO projectOutpoutDTO = new ProjectOutpoutDTO();
+            BeanUtils.copyProperties(projectEntity, projectOutpoutDTO);
+            projects.add(projectOutpoutDTO);
+        }
+
+        return projects;
     }
 
 }

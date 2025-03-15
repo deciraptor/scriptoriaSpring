@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,8 +34,11 @@ public class ProjectController {
     }
 
     // Récupérer tous les projets
-    @GetMapping("/show")
-    public List<ProjectOutpoutDTO> getAllProjects() {
-        return projectService.getAllProjects();
+    @GetMapping("/show/{userId}")
+    public List<ProjectOutpoutDTO> getAllProjects(@PathVariable("userId") Long userId) {
+
+        List<ProjectOutpoutDTO> result = projectService.getAllProjectByUserId(userId);
+
+        return result;
     }
 }

@@ -9,6 +9,8 @@ public interface ProjectService {
 
     ProjectOutpoutDTO createProject(ProjectDTO project); 
 
-    List<ProjectOutpoutDTO>  getAllProjects(); 
+    List<ProjectOutpoutDTO>  getAllProjects();
+
+    List<ProjectOutpoutDTO> getAllProjectByUserId(Long userId); 
     
 }

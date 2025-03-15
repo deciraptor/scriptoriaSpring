@@ -45,7 +45,7 @@ public class ProjectEntity {
 
     // table attributes ManyToOne
 
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 

@@ -1,6 +1,7 @@
 package fr.scriptoria.api.services;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +43,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public ChapterDTO createChapter(Long bookId, ChapterDTO chapterDTO) {
+    public ChapterDTO createChapter(UUID bookId, ChapterDTO chapterDTO) {
 
         // 1. Convertir le ChapterDTO en ChapterDocument
         ChapterDocument chapter = new ChapterDocument();

@@ -1,5 +1,7 @@
 package fr.scriptoria.api.models.documents;
 
+import java.util.UUID;
+
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import jakarta.persistence.Id;
@@ -14,7 +16,7 @@ public class ChapterDocument {
     @Id
     private Long chapterId;
 
-    private Long bookId; // Link with MongoDB book
+    private UUID bookId; // Link with MongoDB book
 
     private String chapterTitle;
 
@@ -34,7 +36,7 @@ public class ChapterDocument {
     public ChapterDocument() {
     }
 
-    public ChapterDocument(Long chapterId, Long bookId, String chapterTitle, String text,
+    public ChapterDocument(Long chapterId, UUID bookId, String chapterTitle, String text,
             fr.scriptoria.api.models.documents.BookDocument bookDocument) {
         this.chapterId = chapterId;
         this.bookId = bookId;
@@ -53,11 +55,11 @@ public class ChapterDocument {
         this.chapterId = chapterId;
     }
 
-    public Long getBookId() {
+    public UUID getBookId() {
         return bookId;
     }
 
-    public void setBookId(Long bookId) {
+    public void setBookId(UUID bookId) {
         this.bookId = bookId;
     }
 

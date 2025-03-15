@@ -2,6 +2,7 @@ package fr.scriptoria.api.models.documents;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -20,7 +21,7 @@ public class BookDocument {
     // attributes
 
     @Id
-    private Long bookId;
+    private UUID bookId;
 
     private Long projectId; // Link with SQL project
 
@@ -43,7 +44,7 @@ public class BookDocument {
     public BookDocument() {
     }
 
-    public BookDocument(Long bookId, Long projectId, List<ChapterDocument> chapters, ProjectEntity projectEntity,
+    public BookDocument(UUID bookId, Long projectId, List<ChapterDocument> chapters, ProjectEntity projectEntity,
             List<ChapterDocument> notes) {
         this.bookId = bookId;
         this.projectId = projectId;
@@ -54,11 +55,11 @@ public class BookDocument {
 
     // getters and setters
 
-    public Long getBookId() {
+    public UUID getBookId() {
         return bookId;
     }
 
-    public void setBookId(Long bookId) {
+    public void setBookId(UUID bookId) {
         this.bookId = bookId;
     }
 
